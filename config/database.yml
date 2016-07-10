@@ -5,11 +5,11 @@ development:
   pool: 5
   host: localhost
   username: postgres
-  password: LaCrosse12    
+  password:     
 test:
   adapter: postgresql
   database: numerology_test
   pool: 5
   host: localhost
   username: postgres
-  password: LaCrosse12
+  password: 
