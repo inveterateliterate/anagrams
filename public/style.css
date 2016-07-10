@@ -1,0 +1,43 @@
+html, body {
+background: url("images/tiles-02.png");
+font-family:"montserrat", arial;
+}
+
+h1 {
+color: #008080;
+text-align: center;
+}
+
+h3 {
+color: #708090;
+font-style: italic;
+font-size: 16px;
+text-align: center;
+}
+
+.form {
+color: #708090;
+font-size: 12px;
+text-align: center;
+}
+
+.form-group {
+padding: 16px 40px;
+}
+
+.btn-default {
+background: #008080;
+border: 1px solid #008080;
+color: #fff;
+border-radius: 4px;
+padding: 16px 40px;
+}
+
+li {
+color: #708090;
+font-size: 40px;
+font-weight: 4px;
+text-align: center;
+list-style: none;
+}
+
