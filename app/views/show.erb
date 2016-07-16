@@ -1,7 +1,9 @@
-<h1 class="anagrams">Anagrams for "<%= "#{@word}" %>"</h1>
+<h1>Anagrams for "<%= "#{@word}" %>"</h1>
 
-<ul>
+<ul class="anagrams">
+<% if !@anagrams.nil? %>
 <% @anagrams.each do |x| %>
-<li><%= "#{x.to_s}"%></li>
+<li><%= "#{x.text}"%></li>
+<%end%>
 <%end%>
 </ul>

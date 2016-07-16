@@ -40,4 +40,9 @@ describe 'Our Anagrams App' do
     word = Word.find_by_text("cat")
     expect(word.letters == "act").to be(true)
   end  
+  
+  it 'adds letters before a new word is created' do
+    word = Word.create(text: "heroku")
+    expect(word.reload.letters == "ehkoru").to be(true)
+  end  
 end

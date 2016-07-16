@@ -1,0 +1,17 @@
+<h1>Words</h1>
+
+<table class="table table-striped">
+<thead>
+<th>Text</th>
+<th>Letters</th>
+</thead>
+
+<tbody>
+<% @words.each do |x| %>
+<tr>
+	<td><%= "#{x.text}" %> </td>
+	<td><%= "#{x.letters}" %> </td>
+</tr>
+<%end%>
+</tbody>
+</table>
