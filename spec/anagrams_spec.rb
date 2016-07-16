@@ -26,5 +26,18 @@ describe 'Our Anagrams App' do
   it 'should display an error if input is does not have distinct letters' do
     post("/", { word: 'too' })
     expect(last_response.body).to include("<p class='error'>")
+  end
+  
+  it 'valid_input throws an exception when input is more than 3 characters' do
+    expect { valid_input("test") }.to raise_error
+  end
+  
+  it 'valid_input throws an exception when input does not have distinct letters' do
+    expect { valid_input("too") }.to raise_error
+  end 
+    
+  it 'has letters of a word in alphabetical order' do
+    word = Word.find_by_text("cat")
+    expect(word.letters == "act").to be(true)
   end  
 end
