@@ -4,6 +4,7 @@
 <thead>
 <th>Text</th>
 <th>Letters</th>
+<th>Edit</th>
 </thead>
 
 <tbody>
@@ -11,6 +12,7 @@
 <tr>
 	<td><%= "#{x.text}" %> </td>
 	<td><%= "#{x.letters}" %> </td>
+	<td><a href="<%= "/words/#{x.id}/edit" %>">Edit</a> </td>
 </tr>
 <%end%>
 </tbody>
