@@ -14,7 +14,7 @@ end
 anagrams = []
 combinations.each do |combo|
 if Word.find_by_text(combo).present?
-anagrams << combo
+anagrams << combo.to_s
 end
 end
 anagrams

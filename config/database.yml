@@ -1,12 +1,11 @@
-production:
-url:<%=ENV["DATABASE_URL"]%> 
 development:
   adapter: postgresql
   database: numerology_development
   pool: 5
   host: localhost
   username: postgres
-  password: LaCrosse12   
+  password: LaCrosse12
+    
 test:
   adapter: postgresql
   database: numerology_test
