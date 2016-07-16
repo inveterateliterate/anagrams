@@ -40,3 +40,9 @@ get "/words" do
 	@words = Word.all.sort
 erb :"/words/index"
 end
+
+delete "/words/:id" do
+	word = Word.find(params[:id])
+	word.delete
+	redirect "/words"
+end
