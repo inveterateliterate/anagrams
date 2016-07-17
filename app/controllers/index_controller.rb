@@ -20,28 +20,20 @@ rescue Exception => error
 end
 end
 
-def three_letters?(input)
-if (input.length <= 3)
-return true
-else 
-return false
-end
-end
-
-def distinct_letters?(input)
-letter_array = input.chars
-unique_letters = letter_array.uniq
-if unique_letters.length < letter_array.length
-false
-else
-true
-end
-end
-
 def valid_input(input)
-if three_letters?(input) && distinct_letters?(input)
-true
-else
-	raise Exception.new("Oops! You should enter a word with three or fewer unique letters.")
-end
+	if !input.empty?
+		input = input.strip
+		if !input.empty?
+			@anagrams = Word.where("text=?", input)
+			if !@anagrams.empty?
+				true
+			else
+				raise Exception.new("Oops! We can't find that word in our dictionary. If you think it's a valid word, please add it to the dictionary!")
+			end
+		else 
+			raise Exception.new("Please enter a word")
+		end
+	else 
+		raise Exception.new("Please enter a word")
+	end
 end

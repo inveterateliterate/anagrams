@@ -1,6 +1,7 @@
 class Word < ActiveRecord::Base
 
 before_save :add_letters
+validates_presence_of :text
 
 def add_letters
 	characters = self.text.chars

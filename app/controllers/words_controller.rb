@@ -1,48 +1,69 @@
-
-
-get "/words/new" do
+get "/dictionary/new" do
 @word = Word.new
-erb :"/words/new"
+erb :"/dictionary/new"
 end
 
-post "/words" do
+post "/dictionary" do
+begin
+	valid_entry(params[:word])
 	@word = Word.create(text: params[:word])
-	redirect "/words/#{@word.id}"
+	redirect "/dictionary/#{@word.id}"
+rescue Exception => error	
+	#redirect "/dictionary/new"
+	@error = error.message
+	@word = Word.new
+		
+	erb :"/dictionary/new"
+end
 end
 
 
-get "/words/:id/edit" do
+get "/dictionary/:id/edit" do
 	@word = Word.find(params[:id])
-erb :"/words/edit"
+	erb :"/dictionary/edit"
 end
 
-put "/words/:id" do
+put "/dictionary/:id" do
 	@word = Word.find(params[:id])
 	@word.text = params[:word]
 
-if @word.valid?
+begin
+	valid_entry(params[:word])
 	@word.save
-	redirect "/words/#{@word.id}"
-else
-	@word.errors.full_messages.each do |msg|
-		@errors = "#{@errors} #{msg}."
-	end
-	erb :"/words/edit"
-end
-end
-
-get "/words/:id" do 
+	redirect "/dictionary/#{@word.id}"
+rescue Exception => error
+	@error = error.message
 	@word = Word.find(params[:id])
-erb :"/words/show"
+	@word.text = params[:word]
+	erb :"/dictionary/edit"
+end
 end
 
-get "/words" do
+get "/dictionary/:id" do 
+	@word = Word.find(params[:id])
+erb :"/dictionary/show"
+end
+
+get "/dictionary" do
 	@words = Word.all.sort
-erb :"/words/index"
+erb :"/dictionary/index"
 end
 
-delete "/words/:id" do
+delete "/dictionary/:id" do
 	word = Word.find(params[:id])
 	word.delete
-	redirect "/words"
+	redirect "/dictionary"
+end
+
+def valid_entry(input)
+	if !input.empty?
+		input = input.strip
+		if !input.empty? && input.match(/[0-9]/).nil?
+			true
+		else
+			raise Exception.new("Please enter words using letters only")
+		end
+	else
+		raise Exception.new("Please enter a word")	
+	end
 end

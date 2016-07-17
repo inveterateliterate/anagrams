@@ -1,5 +1,10 @@
-<h1>Anagrams for "<%= "#{@word}" %>"</h1>
+<div class="main">
+<h1>ANAGRAMS GENERATOR</h1>
 
+</div>
+
+<div class="feature">
+<h2>Anagrams for "<%= "#{@word}" %>"</h2>
 <ul class="anagrams">
 <% if !@anagrams.nil? %>
 <% @anagrams.each do |x| %>
@@ -7,3 +12,8 @@
 <%end%>
 <%end%>
 </ul>
+</div>
+
+<div class="play-again">
+<button type="submit" class="btn btn-default"><a href="<%= "/" %>">Play Again!</a></button>
+</div>
