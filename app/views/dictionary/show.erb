@@ -1,0 +1,31 @@
+<div class="main">
+<h1>ANAGRAMS GENERATOR DICTIONARY</h1>
+<h2>Dictionary Entry for "<%= "#{@word.text}" %>"</h2>
+</div>
+
+<div class="feature">
+<table class="table-dict">
+<thead>
+<th>Text</th>
+<th>Letters</th>
+<th>Edit</th>
+<th>Delete</th>
+</thead>
+
+<tbody>
+
+<tr>
+	<td><%= "#{@word.text}" %></a> </td>
+	<td><%= "#{@word.letters}" %> </td>
+	<td class="edit"><a href="<%= "/dictionary/#{@word.id}/edit" %>">Edit</a> </td>
+	<td class="delete-btn">
+		<form action="<%= "/dictionary/#{@word.id}" %>" method="post">
+			<input type="hidden" name="_method" value="delete" />
+			<button class="btn btn-danger">Delete</button>
+		</form>
+	</td>
+</tr>
+
+</tbody>
+</table>
+</div>
