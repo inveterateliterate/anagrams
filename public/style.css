@@ -1,6 +1,7 @@
 html, body {
-background: url("images/tiles-02.png") no repeat center center fixed;
-font-family:"Montserrat", arial;
+background: url("images/tiles-02.png") center center fixed;
+backgroun-size: cover;
+font-family:"montserrat", arial;
 }
 
 /*Header*/
