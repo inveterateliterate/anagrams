@@ -14,9 +14,9 @@ describe 'Our Anagrams App' do
     end    
   end
 
-  it 'updates a word when a PUT request is sent to /words/:id' do
+  it 'updates a word when a PUT request is sent to /dictionary/:id' do
     id = @word.id
-    put("/words/#{id}", { text: "skillcrusher" })
+    put("/dictionary/#{id}", { text: "skillcrusher" })
     expect(@word.reload.text == "skillcrusher").to be(true)
   end
   

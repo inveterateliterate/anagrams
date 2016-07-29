@@ -3,23 +3,20 @@
 </div>
 
 <div class="feature">
-
 <table class="table-dict">
 <thead>
 <th>Text</th>
 <th>Letters</th>
 <th>Edit</th>
-
 <th>Delete</th>
 </thead>
 
 <tbody>
 <% @words.each do |x| %>
 <tr>
-	<td class="text-letters"><a href="<%= "/dictionary/#{x.id}" %>"><%= "#{x.text}" %> </td>
-	<td class="text-letters"><%= "#{x.letters}" %> </td>
+	<td class="text-letters"><a href="<%= "/dictionary/#{x.id}" %>"><%= "#{x.text}" %></td>
+	<td class="text-letters"><%= "#{x.letters}" %></td>
 	<td class="edit"><a href="<%= "/dictionary/#{x.id}/edit" %>">Edit</a> </td>
-
 	<td class="delete-btn">
 		<form action="<%= "/dictionary/#{x.id}" %>" method="post">
 			<input type="hidden" name="_method" value="delete" />

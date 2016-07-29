@@ -26,9 +26,8 @@ end
 put "/dictionary/:id" do
 	@word = Word.find(params[:id])
 	@word.text = params[:word]
-
 begin
-	valid_entry(params[:word])
+	valid_entry(@word.text)
 	@word.save
 	redirect "/dictionary/#{@word.id}"
 rescue Exception => error

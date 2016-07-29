@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Our Anagrams App' do
   include SpecHelper
 
-  before(:all) do
+  before(:all) do   
     @word = Word.create(text: "skillcrush")
   end
   
@@ -14,9 +14,9 @@ describe 'Our Anagrams App' do
     end    
   end
 
-  it 'deletes a word when a DELETE request is sent to /words/:id' do
+  it 'deletes a word when a DELETE request is sent to /dictionary/:id' do
     id = @word.id
-    delete("/words/#{id}")
+    delete("/dictionary/#{id}")
     expect(Word.exists?(id)).to be(false)
   end
   

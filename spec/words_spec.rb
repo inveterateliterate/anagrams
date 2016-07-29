@@ -14,23 +14,23 @@ describe 'Our Anagrams App' do
     end    
   end
   
-  it 'shows an index page with words following a get request to /words' do
-    post("/words", { text: "heroku" } )
+  it 'shows an index page with words following a get request to /dictionary' do
+    post("/dictionary", { text: "heroku" } )
     expect(Word.find_by_text("heroku").present?).to be(true)
   end  
   
-  it "shows a page with a word's text and it's letters following a get request to /words/:id" do
-    get("/words/#{@word.id}")
+  it "shows a page with a word's text and it's letters following a get request to /dictionary/:id" do
+    get("/dictionary/#{@word.id}")
     expect(last_response.body).to include("#{@word.text}", "#{@word.letters}")
   end
   
   it "has a link to a word's show page on the index view" do
-    get("/words")
-    expect(last_response.body).to include("/words/#{@word.id}")
+    get("/dictionary")
+    expect(last_response.body).to include("/dictionary/#{@word.id}")
   end
 
-  it 'shows an index page with words following a get request to /words' do
-    get("/words")
+  it 'shows an index page with words following a get request to /dictionary' do
+    get("/dictionary")
     expect(last_response.body).to include("act", "cat")
   end  
 end
