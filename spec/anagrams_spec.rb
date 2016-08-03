@@ -17,20 +17,23 @@ describe 'Our Anagrams App' do
     get("/anagrams/cat")
     expect(last_response.body).to include("act")
   end
-  
+
   it 'should display an error if input is longer than 3 characters' do
     post("/", { word: 'catch' })
     expect(last_response.body).to include("<p class='error'>")
   end
+
+  it 'valid_input throws an exception when input is more than 3 characters' do
+    expect { valid_input("test") }.to raise_error
+  end
+
   
   it 'should display an error if input is does not have distinct letters' do
     post("/", { word: 'too' })
     expect(last_response.body).to include("<p class='error'>")
   end
   
-  it 'valid_input throws an exception when input is more than 3 characters' do
-    expect { valid_input("test") }.to raise_error
-  end
+
   
   it 'valid_input throws an exception when input does not have distinct letters' do
     expect { valid_input("too") }.to raise_error

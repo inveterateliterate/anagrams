@@ -1,7 +1,7 @@
 html, body {
 background: url("images/tiles-02.png") center center fixed;
-backgroun-size: cover;
-font-family:"montserrat", arial;
+background-size: cover;
+font-family:"Montserrat", arial;
 }
 
 /*Header*/
@@ -91,7 +91,7 @@ color: #708090;
 padding-top: 8px;
 padding-bottom: 8px;
 text-align: center;
-vertical-align; middle;
+vertical-align: middle;
 font-size: 14px;
 }
 
@@ -151,11 +151,11 @@ text-decoration: none;
 
 /*Error*/
 .error {
-margin: 16px 480px;
 font-style: bold;
 text-align: center;
 color: #B22222;
-border: 2px solid #B22222;
-background: transparent;
+/*
+margin: 16px 480px;
 padding: 8px 16px;
+*/
 }
