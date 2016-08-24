@@ -54,13 +54,25 @@ delete "/dictionary/:id" do
 	redirect "/dictionary"
 end
 
+def avail_word?(input)
+		@new_word = Word.where("text=?", input)
+		if @new_word.empty?
+			true
+		else
+			false
+		end
+end
+
 def valid_entry(input)
 	if !input.empty?
 		input = input.strip
-		if !input.empty? && input.match(/[0-9]/).nil?
+		if !input.empty? 
+			if avail_word?(input) && input.match(/[0-9]/).nil?
 			true
-		else
+		elsif !input.match(/[0-9]/).nil?
 			raise Exception.new("Please enter words using letters only")
+		elsif !avail_word?(input)
+			raise Exception.new("Oops, that word is already in our dictionary! Please enter a new word.")
 		end
 	else
 		raise Exception.new("Please enter a word")	
