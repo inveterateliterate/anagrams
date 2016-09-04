@@ -4,9 +4,15 @@ end
 
 get "/anagrams/:word" do
 @word = params[:word]
+@word.downcase!
 @alphabetized_string = @word.chars.sort.join
 @anagrams = Word.where("letters=?", @alphabetized_string)
-erb :show
+if @anagrams.length > 1
+	erb :show
+else
+	@no_anagram = "There do not appear to be any anagrams for this word.\nIf you think we've missed any, please add them to the dictionary!"
+	erb :show
+end
 end
 
 post "/" do
@@ -33,22 +39,12 @@ def distinct_letters?(input)
 end
  
 def avail_word?(input)
-#if !input.empty?
-	#input = input.strip
-	#if !input.empty?
 			@anagrams = Word.where("text=?", input)
 			if !@anagrams.empty?
 				true
 			else
-				#raise Exception.new("Oops! We can't find that word in our dictionary. If you think it's a valid word, please add it to the dictionary!")
 				false
 			end
-		#else 
-			#raise Exception.new("Please enter a word")
-		#end
-	#else 
-		#raise Exception.new("Please enter a word")
-	#end
 end
 
 
@@ -56,6 +52,7 @@ def valid_input(input)
 if !input.empty?
 	input = input.strip
 	if !input.empty?
+		input.downcase!
 		if avail_word?(input) && distinct_letters?(input)
  			true
 		elsif !distinct_letters?(input)

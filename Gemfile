@@ -21,3 +21,4 @@ gem 'rack'
 
 gem 'rack-test'
 gem 'faker'
+gem 'sinatra-flash'

@@ -51,6 +51,8 @@ GEM
     sinatra-activerecord (2.0.10)
       activerecord (>= 3.2)
       sinatra (~> 1.0)
+    sinatra-flash (0.3.0)
+      sinatra (>= 1.0.0)
     thread_safe (0.3.5)
     tilt (2.0.5)
     tzinfo (1.2.2)
@@ -71,6 +73,7 @@ DEPENDENCIES
   rspec
   sinatra
   sinatra-activerecord
+  sinatra-flash
 
 BUNDLED WITH
    1.12.5

@@ -6,13 +6,15 @@ end
 post "/dictionary" do
 begin
 	valid_entry(params[:word])
-	@word = Word.create(text: params[:word])
+	lower = (params[:word])
+	lower.downcase!
+	@word = Word.create(text: lower)
 	redirect "/dictionary/#{@word.id}"
 rescue Exception => error	
-	#redirect "/dictionary/new"
 	@error = error.message
 	@word = Word.new
-		
+	#flash.now[:error] = error.message
+	#redirect "/dictionary/new"	
 	erb :"/dictionary/new"
 end
 end
@@ -44,7 +46,8 @@ erb :"/dictionary/show"
 end
 
 get "/dictionary" do
-	@words = Word.all.sort
+	@words = Word.all
+	@words = @words.sort_by {|x| x.text}
 erb :"/dictionary/index"
 end
 
@@ -54,13 +57,27 @@ delete "/dictionary/:id" do
 	redirect "/dictionary"
 end
 
+def avail_word?(input)
+	@new_word = Word.where("text=?", input)
+	if !@new_word.empty?
+		true
+	else
+		false
+	end
+end
+
 def valid_entry(input)
 	if !input.empty?
 		input = input.strip
-		if !input.empty? && input.match(/[0-9]/).nil?
-			true
-		else
-			raise Exception.new("Please enter words using letters only")
+		if !input.empty? 
+			input.downcase!
+			if !avail_word?(input) && input.match(/[0-9]/).nil?
+				true
+			elsif !input.match(/[0-9]/).nil?		
+				raise Exception.new("Please enter words using letters only")
+			elsif avail_word?(input)
+				raise Exception.new("Oops, that word is already in our dictionary! Please enter a new word.")
+			end	
 		end
 	else
 		raise Exception.new("Please enter a word")	

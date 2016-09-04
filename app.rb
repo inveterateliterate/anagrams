@@ -6,9 +6,10 @@ require 'rubygems'
 require 'bundler/setup'
 require 'sinatra'
 require "sinatra/activerecord"
-
+require 'sinatra/flash'
 require 'erb'
 
+#enable :sessions
 APP_ROOT = Pathname.new(File.expand_path(File.dirname(__FILE__)))
 
 Dir[APP_ROOT.join('app', 'controllers', '*.rb')].sort{|a,b| !a.include?("index") ? 1 : -1 <=> b.include?("index") ? -1 : 1}.each { |f| require f }

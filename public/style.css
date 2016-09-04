@@ -72,7 +72,7 @@ text-align: center;
 
 .table-dict {
 text-align: center;
-width: 30%;
+width: 20%;
 margin: 50px auto;
 }
 
@@ -81,7 +81,7 @@ border-bottom: 2px solid #008080;
 padding-bottom: 10px;
 text-align: center;
 color: #008080;
-vertical-align; middle;
+vertical-align: middle;
 font-size: 16px;
 }
 
@@ -97,23 +97,14 @@ font-size: 14px;
 
 
 .table-dict td a {
-text-decoration: underline;
-color: #708090;
+	text-decoration: none;
+	color: #fff;
 }
 
-.btn-anagram {
-background: #008080;
-border: 1px solid #008080;
-color: #fff;
-border-radius: 4px;
-padding: 4px 8px;
-font-size: 12px;
-}
-
-
-.btn-danger {
-padding: 4px 8px;
-font-size: 12px;
+.table-dict .btn {
+	padding: 4px 8px;
+	font-size: 12px;
+	width: 56px;
 }
 
 /*Form*/
@@ -158,4 +149,11 @@ color: #B22222;
 margin: 16px 480px;
 padding: 8px 16px;
 */
+}
+
+.no_anagram {
+font-style: bold;
+text-align: center;
+color: #B22222;
+margin-top: 16px;
 }

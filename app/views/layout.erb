@@ -22,5 +22,9 @@
 <p class='error'><%= "#{@error}" %></p>
 <%end%>
 
+<% if @no_anagram.present? %>
+<p class='no_anagram'><%= "#{@no_anagram}" %></p>
+<%end%>
+
 </body>
 </html>
